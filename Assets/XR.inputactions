@@ -1,0 +1,84 @@
+{
+    "version": 1,
+    "name": "XR",
+    "maps": [
+        {
+            "name": "XR",
+            "id": "46003103-96d5-4d41-ac1f-a74bcc106635",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "279dc019-fda0-4594-828d-068b5f0e8d0d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "77a2308b-d055-47e3-86d0-09520cba6e8e",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "2ad78942-38a1-484f-a1bc-5479644b0d25",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TrackingState",
+                    "type": "Value",
+                    "id": "76f9d0ce-1699-4566-8b0c-662256f072aa",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1ac376fd-ee53-48f0-a2a6-4b8ed5ee7fbb",
+                    "path": "XRHMD/centerEyePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04510099-cf1e-4a38-b1b9-94a6ce1db0c1",
+                    "path": "XRHMD/centerEyeRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1065dd0-9c52-49f3-9849-bc8801bf0683",
+                    "path": "XRHMD/trackingState",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TrackingState",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

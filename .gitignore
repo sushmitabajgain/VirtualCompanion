@@ -1,0 +1,38 @@
+# ===============================
+# Unity generated folders
+# ===============================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+
+# ===============================
+# Builds
+# ===============================
+[Bb]uild/
+[Bb]uilds/
+Build_VR/
+
+# ===============================
+# IDE / Editor files
+# ===============================
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Gradle / Android
+# ===============================
+.gradle/
