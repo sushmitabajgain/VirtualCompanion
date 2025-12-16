@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 422982d19f7456947bf08409ef130a9f
   - enabled: 1
     path: Assets/Scenes/BuildingScene.unity
-    guid: 2ed2911b37b3cea4694af076d7288e12
+    guid: 64153d98cc1262c4c8b11e71ff7d4aa9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9740019c3c353ae418177ae682f7aaad, type: 2}

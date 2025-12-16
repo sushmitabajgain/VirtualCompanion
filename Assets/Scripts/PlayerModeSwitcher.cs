@@ -32,6 +32,12 @@ public class PlayerModeSwitcher : MonoBehaviour
         monoRig.SetActive(true);
 
         EnsureSingleAudioListener();
+
+        if (CompanionManager.Instance != null)
+        {
+            CompanionManager.Instance.SetMode(CompanionMode.Mono);
+        }
+
         Debug.Log("Mono mode enabled");
     }
 
@@ -50,8 +56,15 @@ public class PlayerModeSwitcher : MonoBehaviour
         vrRig.SetActive(true);
 
         EnsureSingleAudioListener();
+
+        if (CompanionManager.Instance != null)
+        {
+            CompanionManager.Instance.SetMode(CompanionMode.VR);
+        }
+
         Debug.Log("VR mode enabled");
     }
+
 
     private IEnumerator SafeStartXR()
     {

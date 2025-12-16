@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49654582}
-  - component: {fileID: 49654581}
+  - component: {fileID: 49654583}
   m_Layer: 0
   m_Name: HubUIController
   m_TagString: Untagged
@@ -272,19 +272,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &49654581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49654580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd04bc3ee715e641aaf9acb6cfe49d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HubUIController
-  modePanel: {fileID: 1320748162}
 --- !u!4 &49654582
 Transform:
   m_ObjectHideFlags: 0
@@ -300,6 +287,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49654583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49654580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24fe4f6faa30bb419ba04fd93cabdc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HubUIController
+  modePanel: {fileID: 1320748162}
 --- !u!1001 &69024184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -386,6 +386,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7949137145850013114, guid: 7f4a4efcc1c2ae94996dda072a8177d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2031103301}
+    - targetCorrespondingSourceObject: {fileID: 7949137145850013114, guid: 7f4a4efcc1c2ae94996dda072a8177d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2031103303}
   m_SourcePrefab: {fileID: 100100000, guid: 7f4a4efcc1c2ae94996dda072a8177d6, type: 3}
 --- !u!1 &69024185 stripped
 GameObject:
@@ -739,7 +742,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 49654581}
+      - m_Target: {fileID: 49654583}
         m_TargetAssemblyTypeName: HubUIController, Assembly-CSharp
         m_MethodName: LoadVR
         m_Mode: 1
@@ -925,6 +928,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326720162}
   m_CullTransparentMesh: 1
+--- !u!1 &482566794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 482566796}
+  - component: {fileID: 482566795}
+  - component: {fileID: 482566797}
+  m_Layer: 0
+  m_Name: CompanionSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &482566795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482566794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0906e43417e9c2249b817f9381cdbbbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CompanionManager
+  pauseBetweenLines: 15
+  defaultText: "You are in a calm and gentle space\u2026 take your time."
+  CurrentScene: 
+  CurrentMode: 0
+--- !u!4 &482566796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482566794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &482566797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482566794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f154d29a526b6f4e9cff9fb1c10c5a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElevenLabsTTS
+  apiKey: sk_01966352967942a3646c308ebb6fb55243b19870fb3d8e3a
+  voiceId: EXAVITQu4vr4xnSDxMaL
+  stability: 0.8
+  similarityBoost: 0.5
 --- !u!1 &485234091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1076,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 49654581}
+      - m_Target: {fileID: 49654583}
         m_TargetAssemblyTypeName: HubUIController, Assembly-CSharp
         m_MethodName: SelectScene
         m_Mode: 5
@@ -1498,7 +1566,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 49654581}
+      - m_Target: {fileID: 49654583}
         m_TargetAssemblyTypeName: HubUIController, Assembly-CSharp
         m_MethodName: SelectScene
         m_Mode: 5
@@ -1602,7 +1670,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 140
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1986,7 +2054,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 49654581}
+      - m_Target: {fileID: 49654583}
         m_TargetAssemblyTypeName: HubUIController, Assembly-CSharp
         m_MethodName: LoadMono
         m_Mode: 1
@@ -2355,6 +2423,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fd328bea1f7174ebb968b4fa8ce0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPlayerOnSceneLoad
+--- !u!114 &2031103303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031103295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d499986d3f5a848a3eb52b3996b7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementTracker
+  stillThreshold: 0.01
+  stillTimeRequired: 2
+  movementSpeakCooldown: 1.5
 --- !u!1 &2082294217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,7 +2495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Gallery
+  m_text: Park
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 989fb712741e4de4b91e872f37dd347c, type: 2}
   m_sharedMaterial: {fileID: -4580377584787246738, guid: 989fb712741e4de4b91e872f37dd347c, type: 2}
@@ -2497,8 +2580,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 1203956456}
   - {fileID: 1554744186}
-  - {fileID: 49654582}
   - {fileID: 228745805}
   - {fileID: 1370292680}
+  - {fileID: 49654582}
   - {fileID: 69024184}
   - {fileID: 266364671}
+  - {fileID: 482566796}

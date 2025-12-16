@@ -24,15 +24,18 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // IMPORTANT: prevent auto-play
+        // Prevent auto-play
         musicSource.playOnAwake = false;
+
+        // Low background music volume
+        musicSource.volume = 0.2f;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
     {
-        // Handle first scene load
+        // Handle initial scene
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
@@ -58,7 +61,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void PlayMusic(AudioClip clip)
+    void PlayMusic(AudioClip clip)
     {
         if (clip == null)
         {
@@ -71,10 +74,11 @@ public class AudioManager : MonoBehaviour
 
         musicSource.Stop();
         musicSource.clip = clip;
+        musicSource.loop = true;
         musicSource.Play();
     }
 
-    private void StopMusic()
+    void StopMusic()
     {
         musicSource.Stop();
         musicSource.clip = null;
