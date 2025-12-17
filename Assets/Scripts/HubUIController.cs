@@ -6,10 +6,13 @@ public class HubUIController : MonoBehaviour
     public GameObject modePanel;
 
     private string pendingScene;
+    private bool loading;
 
     void Start()
     {
         pendingScene = null;
+        loading = false;
+
         if (modePanel != null)
             modePanel.SetActive(false);
     }
@@ -17,6 +20,9 @@ public class HubUIController : MonoBehaviour
     // Called by Camp / Building buttons
     public void SelectScene(string sceneName)
     {
+        if (loading)
+            return;
+
         pendingScene = sceneName;
 
         if (modePanel != null)
@@ -26,8 +32,10 @@ public class HubUIController : MonoBehaviour
     // Mono button
     public void LoadMono()
     {
-        if (string.IsNullOrEmpty(pendingScene))
+        if (loading || string.IsNullOrEmpty(pendingScene))
             return;
+
+        loading = true;
 
         PlayerModeSwitcher.Instance.EnableMono();
         SceneManager.LoadScene(pendingScene);
@@ -36,8 +44,10 @@ public class HubUIController : MonoBehaviour
     // VR button
     public void LoadVR()
     {
-        if (string.IsNullOrEmpty(pendingScene))
+        if (loading || string.IsNullOrEmpty(pendingScene))
             return;
+
+        loading = true;
 
         PlayerModeSwitcher.Instance.EnableVR();
         SceneManager.LoadScene(pendingScene);

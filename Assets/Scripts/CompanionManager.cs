@@ -184,14 +184,14 @@ public class CompanionManager : MonoBehaviour
             {
                 "Welcome to the campsite… a place of quiet warmth and open air",
                 "You may notice the gentle breeze moving through the trees",
-                "The ground beneath you feels steady and supportive",
-                "Soft natural sounds create a calm rhythm around you",
-                "This space invites you to slow down and observe",
-                "There is no destination you need to reach here",
-                "Each moment is complete just as it is",
-                "You can let your shoulders relax naturally",
-                "Breathing becomes easier in this open environment",
-                "Take your time… the campsite is here for you"
+                // "The ground beneath you feels steady and supportive",
+                // "Soft natural sounds create a calm rhythm around you",
+                // "This space invites you to slow down and observe",
+                // "There is no destination you need to reach here",
+                // "Each moment is complete just as it is",
+                // "You can let your shoulders relax naturally",
+                // "Breathing becomes easier in this open environment",
+                // "Take your time… the campsite is here for you"
             };
         }
 
@@ -201,14 +201,14 @@ public class CompanionManager : MonoBehaviour
             {
                 "Welcome to the park… a familiar and peaceful place",
                 "The space around you feels calm and unhurried",
-                "You may notice subtle movements of light and shadow",
-                "Benches and pathways invite gentle exploration",
-                "There is comfort in the quiet structure of this place",
-                "Nothing here demands your attention",
-                "You can move or pause whenever you like",
-                "The environment supports stillness and reflection",
-                "Moments pass softly here",
-                "You are welcome to simply be present"
+                // "You may notice subtle movements of light and shadow",
+                // "Benches and pathways invite gentle exploration",
+                // "There is comfort in the quiet structure of this place",
+                // "Nothing here demands your attention",
+                // "You can move or pause whenever you like",
+                // "The environment supports stillness and reflection",
+                // "Moments pass softly here",
+                // "You are welcome to simply be present"
             };
         }
 

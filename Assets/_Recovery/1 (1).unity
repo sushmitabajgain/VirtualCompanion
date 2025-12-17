@@ -4708,7 +4708,6 @@ GameObject:
   - component: {fileID: 1240801784}
   - component: {fileID: 1240801783}
   - component: {fileID: 1240801786}
-  - component: {fileID: 1240801787}
   m_Layer: 5
   m_Name: BtnBack
   m_TagString: Untagged
@@ -4842,19 +4841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b999740fd3f45e4899675dd7c2c7778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
---- !u!114 &1240801787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240801781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb2cc02d47798242bbed14e12e2b1a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BackButtonVisibility
-  backButton: {fileID: 1240801781}
 --- !u!1 &1249703093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5120,7 +5106,7 @@ Transform:
   m_GameObject: {fileID: 1308680331}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07195265, y: 0.7214007, z: -0.075822264, w: 0.6845838}
-  m_LocalPosition: {x: -20.659, y: 9, z: -99.97}
+  m_LocalPosition: {x: -33, y: 9.5, z: -86}
   m_LocalScale: {x: 1, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9604,10 +9590,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camp fire
       objectReference: {fileID: 0}
-    - target: {fileID: 7045738327038336344, guid: 262f0041ccb1eb04596f783b9a41c0e4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7653942773966613005, guid: 262f0041ccb1eb04596f783b9a41c0e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.07
@@ -9648,10 +9630,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8464231444020921585, guid: 262f0041ccb1eb04596f783b9a41c0e4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9661,8 +9639,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1308680332}
   - {fileID: 1436668654}
+  - {fileID: 1308680332}
   - {fileID: 410087041}
   - {fileID: 1655638773}
   - {fileID: 8597642}

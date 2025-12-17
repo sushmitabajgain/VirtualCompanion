@@ -1,61 +1,46 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.Management;
+
 #if UNITY_ANDROID || UNITY_IOS
 using Google.XR.Cardboard;
 #endif
-using System.Collections;
 
-public class CardboardExitHandler : MonoBehaviour
+public class ExitVRView : MonoBehaviour
 {
-    // Name of the menu scene to load when exiting VR
-    public string menuScene = "ModeSelect";
+    // Set this to your Hub SCENE name
+    public string hubScene = "HubScene";
 
-    // Reference to VR camera (disabled during exit)
-    public Camera vrCamera;
+    private bool exiting;
 
-    // Flag to ensure exit is triggered only once
-    bool exiting;
-
-
-    // ====== Update Loop ======
     void Update()
     {
+        if (exiting)
+            return;
+
 #if UNITY_ANDROID || UNITY_IOS
-        // On mobile: check if the Cardboard "close" button was pressed
-        // If pressed, start coroutine to exit VR
-        if (!exiting && Api.IsCloseButtonPressed)
-            StartCoroutine(ExitVR());
+        // Cardboard system X button
+        if (Api.IsCloseButtonPressed)
+        {
+            ExitToHub();
+            return;
+        }
 #endif
+
+        // Android back button
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitToHub();
+        }
     }
 
-
-    // ====== Exit VR Process ======
-    IEnumerator ExitVR()
+    private void ExitToHub()
     {
-        exiting = true; // Prevent multiple exits
+        exiting = true;
 
-        // Disable VR camera to stop rendering
-        if (vrCamera) vrCamera.enabled = false;
+        // Exit XR FIRST
+        PlayerModeSwitcher.Instance.EnableMono();
 
-        // Load the menu scene additively (on top of current VR scene)
-        var load = SceneManager.LoadSceneAsync(menuScene, LoadSceneMode.Additive);
-        yield return load;
-
-        // Set the menu scene as active
-        var menu = SceneManager.GetSceneByName(menuScene);
-        SceneManager.SetActiveScene(menu);
-
-        // Stop and deinitialize XR subsystems to fully exit VR mode
-        var mgr = XRGeneralSettings.Instance.Manager;
-        if (mgr != null)
-        {
-            mgr.StopSubsystems();
-            yield return null;              
-            mgr.DeinitializeLoader();
-        }
-
-        // Finally, unload the VR scene (the one this script belongs to)
-        yield return SceneManager.UnloadSceneAsync(gameObject.scene);
+        // Then load Hub scene
+        SceneManager.LoadScene(hubScene);
     }
 }

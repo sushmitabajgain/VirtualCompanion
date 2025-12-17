@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.XR.Management;
 using System.Collections;
 
+#if UNITY_ANDROID
+using Google.XR.Cardboard;
+#endif
+
 public class PlayerModeSwitcher : MonoBehaviour
 {
     public static PlayerModeSwitcher Instance;
@@ -22,17 +26,21 @@ public class PlayerModeSwitcher : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // -------- MONO MODE --------
+    // ================= MONO MODE =================
     public void EnableMono()
     {
         StopAllCoroutines();
-        SafeStopXR();
+        StartCoroutine(EnableMonoRoutine());
+    }
+
+    private IEnumerator EnableMonoRoutine()
+    {
+        yield return SafeStopXR();
 
         vrRig.SetActive(false);
         monoRig.SetActive(true);
 
         EnsureSingleAudioListener();
-
         if (CompanionManager.Instance != null)
         {
             CompanionManager.Instance.SetMode(CompanionMode.Mono);
@@ -41,14 +49,14 @@ public class PlayerModeSwitcher : MonoBehaviour
         Debug.Log("Mono mode enabled");
     }
 
-    // -------- VR MODE --------
+    // ================= VR MODE =================
     public void EnableVR()
     {
         StopAllCoroutines();
-        StartCoroutine(StartVRRoutine());
+        StartCoroutine(EnableVRRoutine());
     }
 
-    private IEnumerator StartVRRoutine()
+    private IEnumerator EnableVRRoutine()
     {
         yield return SafeStartXR();
 
@@ -58,20 +66,25 @@ public class PlayerModeSwitcher : MonoBehaviour
         EnsureSingleAudioListener();
 
         if (CompanionManager.Instance != null)
-        {
             CompanionManager.Instance.SetMode(CompanionMode.VR);
-        }
 
         Debug.Log("VR mode enabled");
     }
 
-
+    // ================= XR START =================
     private IEnumerator SafeStartXR()
     {
-        if (XRGeneralSettings.Instance == null)
+#if UNITY_ANDROID
+        // 🔒 FIXED ORIENTATION FOR VR
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        yield return null;
+#endif
+
+        var gs = XRGeneralSettings.Instance;
+        if (gs == null)
             yield break;
 
-        var manager = XRGeneralSettings.Instance.Manager;
+        var manager = gs.Manager;
         if (manager == null)
             yield break;
 
@@ -84,20 +97,53 @@ public class PlayerModeSwitcher : MonoBehaviour
         manager.StartSubsystems();
     }
 
-    private void SafeStopXR()
+    // ================= XR STOP =================
+    private IEnumerator SafeStopXR()
     {
-        if (XRGeneralSettings.Instance == null) return;
-
-        var manager = XRGeneralSettings.Instance.Manager;
-        if (manager == null) return;
-
-        if (manager.isInitializationComplete)
+        var gs = XRGeneralSettings.Instance;
+        if (gs != null)
         {
-            manager.StopSubsystems();
-            manager.DeinitializeLoader();
+            var manager = gs.Manager;
+            if (manager != null && manager.isInitializationComplete)
+            {
+                manager.StopSubsystems();
+                manager.DeinitializeLoader();
+            }
         }
+
+#if UNITY_ANDROID
+        // 🔒 KEEP LANDSCAPE LEFT (NO ROTATION)
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+#endif
+
+        yield return null;
+        yield return new WaitForEndOfFrame();
     }
 
+    // ================= ANDROID SYSTEM EXIT =================
+    void OnApplicationPause(bool paused)
+    {
+#if UNITY_ANDROID
+        if (paused)
+        {
+            StopAllCoroutines();
+            StartCoroutine(SafeStopXR());
+        }
+#endif
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+#if UNITY_ANDROID
+        if (!hasFocus)
+        {
+            StopAllCoroutines();
+            StartCoroutine(SafeStopXR());
+        }
+#endif
+    }
+
+    // ================= AUDIO =================
     private void EnsureSingleAudioListener()
     {
         var listeners = FindObjectsByType<AudioListener>(FindObjectsSortMode.None);
